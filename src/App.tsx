@@ -11,7 +11,7 @@ const App: React.FC = () => {
       </header>
       <div className="app__content">
         Nome: {userName}
-        <MyForm setUserName={setUserName} />
+        <MyForm onSubmitHandler={setUserName} />
       </div>
     </div>
   );

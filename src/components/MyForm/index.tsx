@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "@material-ui/core/styles";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import { useForm } from "react-hook-form";
@@ -29,15 +29,16 @@ const InputText = React.forwardRef<unknown, TextFieldProps>((props, ref) => (
 ));
 
 interface MyFormProps {
-  setUserName: (value: string) => void;
+  onSubmitHandler: (value: string) => void;
 }
 
-const MyForm: React.FC<MyFormProps> = ({ setUserName }: MyFormProps) => {
+const MyForm: React.FC<MyFormProps> = ({
+  onSubmitHandler = (data) => data,
+}: MyFormProps) => {
   const { register, handleSubmit, errors } = useForm<FormData>();
   const onSubmit = handleSubmit(({ firstName, lastName }) => {
-    // console.log(firstName, lastName);
-    setUserName(`${firstName} ${lastName}`);
-  }); // firstName and lastName will have correct type
+    onSubmitHandler(`${firstName} ${lastName}`);
+  });
 
   return (
     <div className="myForm">
