@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import MyForm from "components/MyForm";
 
-function App() {
+const App: React.FC = () => {
+  const [userName, setUserName] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="app">
+      <header>
+        <div className="app__title">React Hook Form Test</div>
       </header>
+      <div className="app__content">
+        Nome: {userName}
+        <MyForm setUserName={setUserName} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
