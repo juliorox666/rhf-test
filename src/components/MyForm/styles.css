@@ -1,9 +1,9 @@
-.myForm {
+.my-form {
   max-width: 1200px;
   padding: 40px;
 }
 
-.myForm__title {
+.my-form__title {
   font-size: 24px;
   font-weight: bold;
   color: #000;
@@ -25,23 +25,23 @@
   box-sizing: border-box;
 }
 
-.formData {
+.form-data {
   width: 100%;
 }
 
-.formData__label {
+.form-data__label {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   padding: 16px 0;
   align-items: center;
 }
-.formData__text {
+.form-data__text {
   font-size: 18px;
   padding: 0 18px;
 }
 
-.formData__submit {
+.form-data__submit {
   display: flex;
   justify-content: center;
 }

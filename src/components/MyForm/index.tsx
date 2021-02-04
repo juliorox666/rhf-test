@@ -2,10 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@material-ui/core/styles";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import { Select, MenuItem } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
 import "./styles.css";
@@ -36,7 +32,7 @@ const InputText = React.forwardRef<TextFieldProps, InputTextProps>(
   )
 );
 
-interface UserProps {
+interface User {
   firstName: string;
   lastName: string;
   phone: string;
@@ -45,53 +41,56 @@ interface UserProps {
 }
 
 interface MyFormProps {
-  onSubmitHandler: (data: UserProps) => void;
+  onSubmitHandler: (data: User) => void;
 }
 
 const MyForm: React.FC<MyFormProps> = ({
   onSubmitHandler = (data) => JSON.stringify(data),
 }: MyFormProps) => {
-  const [user, setUser] = useState<UserProps | null>();
+  const [user, setUser] = useState<User | null>();
   const {
     register,
     handleSubmit,
     errors,
-    setValue,
-    watch,
-  } = useForm<UserProps>();
-  const selectedGender = watch("gender");
+    formState: { isDirty },
+    reset,
+  } = useForm<User>();
   const onSubmit = handleSubmit((data) => {
     onSubmitHandler(data);
     setUser(data);
   });
 
-  const handleChange = (
-    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
-  ) => {
-    setValue("gender", event.target.value, { shouldValidate: true });
-  };
-
   useEffect(() => {
-    register({ name: "gender" }, { required: true });
-  }, [register]);
+    if (user) {
+      reset(user);
+    }
+  }, [reset, user]);
 
   return (
-    <div className="myForm">
+    <div className="my-form">
       <pre>
         <code>{JSON.stringify(user, null, 4)}</code>
       </pre>
-      <div className="myForm__message">
+      <div className="my-form__message">
         {user?.firstName && (
           <Alert severity="success">Sign up successfully done!</Alert>
         )}
       </div>
-      <div className="myForm__title">📝 Register Form</div>
-      <div className="myForm__box">
-        <form className="formData" onSubmit={onSubmit}>
-          <div className="formData__label">
+      <div className="my-form__title">📝 Register Form</div>
+      <div className="my-form__box">
+        <form className="form-data" onSubmit={onSubmit}>
+          <div className="form-data__label">
             <InputText
               error={!!errors.firstName}
-              helperText={errors.firstName ? `First name is required` : ``}
+              helperText={
+                errors.firstName ? (
+                  <span data-testid="firstname-error-message">
+                    First name is required
+                  </span>
+                ) : (
+                  ``
+                )
+              }
               label="First name"
               data-testid="firstName"
               id="firstName"
@@ -99,10 +98,18 @@ const MyForm: React.FC<MyFormProps> = ({
               ref={register({ required: true })}
             />
           </div>
-          <div className="formData__label">
+          <div className="form-data__label">
             <InputText
               error={!!errors.lastName}
-              helperText={errors.lastName ? `Last name is required` : ``}
+              helperText={
+                errors.lastName ? (
+                  <span data-testid="lastname-error-message">
+                    Last name is required
+                  </span>
+                ) : (
+                  ``
+                )
+              }
               label="Last name"
               data-testid="lastName"
               id="lastName"
@@ -110,7 +117,7 @@ const MyForm: React.FC<MyFormProps> = ({
               ref={register({ required: true })}
             />
           </div>
-          <div className="formData__label">
+          <div className="form-data__label">
             <InputText
               error={!!errors.phone}
               helperText={errors.phone ? `Phone is required` : ``}
@@ -121,7 +128,7 @@ const MyForm: React.FC<MyFormProps> = ({
               ref={register({ required: true })}
             />
           </div>
-          <div className="formData__label">
+          <div className="form-data__label">
             <InputText
               error={!!errors.email}
               helperText={errors.email ? `Email is required` : ``}
@@ -132,28 +139,23 @@ const MyForm: React.FC<MyFormProps> = ({
               ref={register({ required: true })}
             />
           </div>
-          <div className="formData__label">
-            <FormControl variant="outlined" error={!!errors.gender} fullWidth>
-              <InputLabel htmlFor="gender">Gender</InputLabel>
-              <Select
-                value={selectedGender}
-                onChange={handleChange}
-                label="Gender"
-                name="gender"
-                data-testid="gender"
-              >
-                <MenuItem value={undefined} />
-                <MenuItem value="male">Male</MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-                <MenuItem value="other">Other</MenuItem>
-              </Select>
-              {errors.gender && (
-                <FormHelperText>Gender is required</FormHelperText>
-              )}
-            </FormControl>
+          <div className="form-data__label">
+            <select
+              className="form-data__label select-component"
+              name="gender"
+              data-testid="gender"
+              ref={register({ required: true })}
+            >
+              <option value="">- SELECT ONE -</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            {errors.gender && <span role="alert">Gender is required</span>}
           </div>
-          <div className="formData__submit submit">
+          <div className="form-data__submit submit">
             <input
+              disabled={!isDirty}
               id="submit"
               data-testid="submit"
               className="submit__button"
