@@ -10,7 +10,7 @@ exports[`Form validation should be able to submit the form 1`] = `
         {
     "firstName": "Julio",
     "lastName": "Guedes",
-    "phone": "31998282827",
+    "phone": "3199282822",
     "email": "julio@gmail.com",
     "gender": "male"
 }
@@ -227,7 +227,7 @@ exports[`Form validation should be able to submit the form 1`] = `
           class="form-data__label"
         >
           <select
-            class="form-data__label select-component"
+            class="form-data__label select-component "
             data-testid="gender"
             name="gender"
           >
@@ -431,7 +431,11 @@ exports[`Form validation should firstName be required for submitting 1`] = `
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
               id="phone-helper-text"
             >
-              Phone is required
+              <span
+                data-testid="phone-error-message"
+              >
+                Phone is required
+              </span>
             </p>
           </div>
         </div>
@@ -479,7 +483,11 @@ exports[`Form validation should firstName be required for submitting 1`] = `
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
               id="email-helper-text"
             >
-              Email is required
+              <span
+                data-testid="email-error-message"
+              >
+                Email is required
+              </span>
             </p>
           </div>
         </div>
@@ -487,7 +495,7 @@ exports[`Form validation should firstName be required for submitting 1`] = `
           class="form-data__label"
         >
           <select
-            class="form-data__label select-component"
+            class="form-data__label select-component select-component-error"
             data-testid="gender"
             name="gender"
           >
@@ -512,11 +520,13 @@ exports[`Form validation should firstName be required for submitting 1`] = `
               Other
             </option>
           </select>
-          <span
+          <p
+            class="select-component__message"
+            data-testid="gender-error-message"
             role="alert"
           >
             Gender is required
-          </span>
+          </p>
         </div>
         <div
           class="form-data__submit submit"
@@ -695,7 +705,11 @@ exports[`Form validation should lastName be required for submitting 1`] = `
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
               id="phone-helper-text"
             >
-              Phone is required
+              <span
+                data-testid="phone-error-message"
+              >
+                Phone is required
+              </span>
             </p>
           </div>
         </div>
@@ -743,7 +757,11 @@ exports[`Form validation should lastName be required for submitting 1`] = `
               class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
               id="email-helper-text"
             >
-              Email is required
+              <span
+                data-testid="email-error-message"
+              >
+                Email is required
+              </span>
             </p>
           </div>
         </div>
@@ -751,7 +769,7 @@ exports[`Form validation should lastName be required for submitting 1`] = `
           class="form-data__label"
         >
           <select
-            class="form-data__label select-component"
+            class="form-data__label select-component select-component-error"
             data-testid="gender"
             name="gender"
           >
@@ -776,11 +794,13 @@ exports[`Form validation should lastName be required for submitting 1`] = `
               Other
             </option>
           </select>
-          <span
+          <p
+            class="select-component__message"
+            data-testid="gender-error-message"
             role="alert"
           >
             Gender is required
-          </span>
+          </p>
         </div>
         <div
           class="form-data__submit submit"

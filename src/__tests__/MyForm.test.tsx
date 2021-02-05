@@ -9,14 +9,31 @@ describe("Form validation", () => {
 
     const firstName = getByTestId("firstName") as HTMLInputElement;
     const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
 
     act(() => {
       fireEvent.change(firstName, { target: { value: "Julio" } });
+    });
+    act(() => {
       fireEvent.change(lastName, { target: { value: "Guedes" } });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: "3199282822" } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: "julio@gmail.com" } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: "male" } });
     });
 
     expect(firstName).toHaveValue("Julio");
     expect(lastName).toHaveValue("Guedes");
+    expect(phone).toHaveValue("3199282822");
+    expect(email).toHaveValue("julio@gmail.com");
+    expect(gender).toHaveValue("male");
   });
 
   test("should firstName be required for submitting", async () => {
@@ -29,10 +46,10 @@ describe("Form validation", () => {
     const lastName = getByTestId("lastName") as HTMLInputElement;
     const submit = getByTestId("submit");
 
-    await act(async () => {
+    act(() => {
       fireEvent.input(firstName, { target: { value: "" } });
     });
-    await act(async () => {
+    act(() => {
       fireEvent.input(lastName, { target: { value: "Guedes" } });
     });
 
@@ -53,10 +70,10 @@ describe("Form validation", () => {
     const lastName = getByTestId("lastName") as HTMLInputElement;
     const submit = getByTestId("submit");
 
-    await act(async () => {
+    act(() => {
       fireEvent.input(firstName, { target: { value: "Julio" } });
     });
-    await act(async () => {
+    act(() => {
       fireEvent.input(lastName, { target: { value: "" } });
     });
 
@@ -81,11 +98,19 @@ describe("Form validation", () => {
 
     const submit = getByTestId("submit");
 
-    await act(async () => {
+    act(() => {
       fireEvent.change(firstName, { target: { value: "Julio" } });
+    });
+    act(() => {
       fireEvent.change(lastName, { target: { value: "Guedes" } });
-      fireEvent.change(phone, { target: { value: "31998282827" } });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: "3199282822" } });
+    });
+    act(() => {
       fireEvent.change(email, { target: { value: "julio@gmail.com" } });
+    });
+    act(() => {
       fireEvent.change(gender, { target: { value: "male" } });
     });
 

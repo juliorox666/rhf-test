@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import "./styles.css";
 
 const TextFieldCustom = styled(TextField)({
+  width: "100%",
   border: 0,
   borderRadius: 3,
   color: "white",
@@ -120,7 +121,15 @@ const MyForm: React.FC<MyFormProps> = ({
           <div className="form-data__label">
             <InputText
               error={!!errors.phone}
-              helperText={errors.phone ? `Phone is required` : ``}
+              helperText={
+                errors.phone ? (
+                  <span data-testid="phone-error-message">
+                    Phone is required
+                  </span>
+                ) : (
+                  ``
+                )
+              }
               label="Phone"
               data-testid="phone"
               id="phone"
@@ -131,7 +140,15 @@ const MyForm: React.FC<MyFormProps> = ({
           <div className="form-data__label">
             <InputText
               error={!!errors.email}
-              helperText={errors.email ? `Email is required` : ``}
+              helperText={
+                errors.email ? (
+                  <span data-testid="email-error-message">
+                    Email is required
+                  </span>
+                ) : (
+                  ``
+                )
+              }
               label="Email"
               data-testid="email"
               id="email"
@@ -141,7 +158,9 @@ const MyForm: React.FC<MyFormProps> = ({
           </div>
           <div className="form-data__label">
             <select
-              className="form-data__label select-component"
+              className={`form-data__label select-component ${
+                errors.gender ? "select-component-error" : ""
+              }`}
               name="gender"
               data-testid="gender"
               ref={register({ required: true })}
@@ -151,7 +170,15 @@ const MyForm: React.FC<MyFormProps> = ({
               <option value="female">Female</option>
               <option value="other">Other</option>
             </select>
-            {errors.gender && <span role="alert">Gender is required</span>}
+            {errors.gender && (
+              <p
+                className="select-component__message"
+                data-testid="gender-error-message"
+                role="alert"
+              >
+                Gender is required
+              </p>
+            )}
           </div>
           <div className="form-data__submit submit">
             <input
