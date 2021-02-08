@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@material-ui/core/styles";
 import TextField, { TextFieldProps } from "@material-ui/core/TextField";
+import { CircularProgress } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
+import { http } from "services/api";
 import "./styles.css";
 
 const TextFieldCustom = styled(TextField)({
@@ -48,6 +50,8 @@ interface MyFormProps {
 const MyForm: React.FC<MyFormProps> = ({
   onSubmitHandler = (data) => JSON.stringify(data),
 }: MyFormProps) => {
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>();
   const {
     register,
@@ -56,9 +60,23 @@ const MyForm: React.FC<MyFormProps> = ({
     formState: { isDirty },
     reset,
   } = useForm<User>();
-  const onSubmit = handleSubmit((data) => {
-    onSubmitHandler(data);
-    setUser(data);
+  const onSubmit = handleSubmit((dataForm) => {
+    setIsLoading(true);
+    http
+      .post<User>("/login", {
+        ...dataForm,
+      })
+      .then((response) => {
+        const { data } = response;
+        setHasError(false);
+        setUser(data);
+        onSubmitHandler(data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setHasError(true);
+        setIsLoading(false);
+      });
   });
 
   useEffect(() => {
@@ -74,7 +92,14 @@ const MyForm: React.FC<MyFormProps> = ({
       </pre>
       <div className="my-form__message">
         {user?.firstName && (
-          <Alert severity="success">Sign up successfully done!</Alert>
+          <Alert data-testid="alert-message-success" severity="success">
+            Sign up successfully done!
+          </Alert>
+        )}
+        {hasError && (
+          <Alert data-testis="alert-message-error" severity="error">
+            Oh no, something bad happened.
+          </Alert>
         )}
       </div>
       <div className="my-form__title">📝 Register Form</div>
@@ -180,9 +205,17 @@ const MyForm: React.FC<MyFormProps> = ({
               </p>
             )}
           </div>
+          <div className="form-data__label">
+            {isLoading && (
+              <CircularProgress
+                className="form-data__label loading-icon"
+                data-testid="icon-loading"
+              />
+            )}
+          </div>
           <div className="form-data__submit submit">
             <input
-              disabled={!isDirty}
+              disabled={!isDirty || isLoading}
               id="submit"
               data-testid="submit"
               className="submit__button"

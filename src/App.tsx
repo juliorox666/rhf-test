@@ -9,7 +9,7 @@ const App: React.FC = () => {
         <div className="app__title">React Hook Form Test</div>
       </header>
       <div className="app__content">
-        <MyForm onSubmitHandler={(data) => console.log(JSON.stringify(data))} />
+        <MyForm onSubmitHandler={(data) => JSON.stringify(data)} />
       </div>
     </div>
   );
