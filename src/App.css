@@ -1,9 +1,6 @@
 :root {
   --main-color: #4b5dec;
 }
-.app {
-  text-align: center;
-}
 
 header {
   background: var(--main-color);
