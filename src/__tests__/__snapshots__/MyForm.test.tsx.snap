@@ -1260,7 +1260,7 @@ exports[`Form submitting should fail the submit the form 1`] = `
     >
       <div
         class="MuiPaper-root MuiAlert-root MuiAlert-standardError MuiPaper-elevation0"
-        data-testis="alert-message-error"
+        data-testid="alert-message-error"
         role="alert"
       >
         <div

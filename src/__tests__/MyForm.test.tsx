@@ -307,6 +307,7 @@ describe("Form submitting", () => {
     });
 
     // waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+    // expect(getByTestId("icon-loading")).toBeInTheDocument();
 
     expect(mockOnSubmit).toHaveBeenCalledTimes(1);
     expect(container).toMatchSnapshot();
@@ -353,7 +354,83 @@ describe("Form submitting", () => {
     });
 
     // await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+    // expect(getByTestId("icon-loading")).toBeInTheDocument();
     expect(mockOnSubmit).toHaveBeenCalledTimes(0);
     expect(container).toMatchSnapshot();
+  });
+
+  test("should fail in the first time and succeed on second time", async () => {
+    createUserSpy.mockRejectedValueOnce(
+      () => new Promise((value) => setTimeout(() => value, 1500))
+    );
+
+    const mockOnSubmit = jest.fn();
+    const { getByTestId } = render(<MyForm onSubmitHandler={mockOnSubmit} />);
+
+    const firstName = getByTestId("firstName") as HTMLInputElement;
+    const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
+    const submit = getByTestId("submit");
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    // await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+
+    expect(mockOnSubmit).toHaveBeenCalledTimes(0);
+    expect(getByTestId("alert-message-error")).toBeInTheDocument();
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: "novonome" },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    // await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+
+    expect(mockOnSubmit).toHaveBeenCalledTimes(1);
+    expect(getByTestId("alert-message-success")).toBeInTheDocument();
   });
 });
