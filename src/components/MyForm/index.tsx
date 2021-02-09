@@ -6,6 +6,7 @@ import { CircularProgress } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
 import { http } from "services/api";
+import { User, createUser } from "services/user";
 import "./styles.css";
 
 const TextFieldCustom = styled(TextField)({
@@ -35,14 +36,6 @@ const InputText = React.forwardRef<TextFieldProps, InputTextProps>(
   )
 );
 
-interface User {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  gender: string;
-}
-
 interface MyFormProps {
   onSubmitHandler: (data: User) => void;
 }
@@ -62,10 +55,7 @@ const MyForm: React.FC<MyFormProps> = ({
   } = useForm<User>();
   const onSubmit = handleSubmit((dataForm) => {
     setIsLoading(true);
-    http
-      .post<User>("/login", {
-        ...dataForm,
-      })
+    createUser(dataForm)
       .then((response) => {
         const { data } = response;
         setHasError(false);

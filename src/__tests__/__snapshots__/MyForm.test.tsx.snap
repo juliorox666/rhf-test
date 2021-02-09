@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form validation should fail the submit the form 1`] = `
+exports[`Form fields should email be required for submitting 1`] = `
 <div>
   <div
     class="my-form"
@@ -10,33 +10,7 @@ exports[`Form validation should fail the submit the form 1`] = `
     </pre>
     <div
       class="my-form__message"
-    >
-      <div
-        class="MuiPaper-root MuiAlert-root MuiAlert-standardError MuiPaper-elevation0"
-        data-testis="alert-message-error"
-        role="alert"
-      >
-        <div
-          class="MuiAlert-icon"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-            />
-          </svg>
-        </div>
-        <div
-          class="MuiAlert-message"
-        >
-          Oh no, something bad happened.
-        </div>
-      </div>
-    </div>
+    />
     <div
       class="my-form__title"
     >
@@ -181,7 +155,7 @@ exports[`Form validation should fail the submit the form 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-21"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-error Mui-error Mui-focused Mui-focused"
               data-shrink="true"
               for="email"
               id="email-label"
@@ -189,10 +163,11 @@ exports[`Form validation should fail the submit the form 1`] = `
               Email
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error Mui-focused Mui-focused MuiInputBase-formControl"
             >
               <input
-                aria-invalid="false"
+                aria-describedby="email-helper-text"
+                aria-invalid="true"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="email"
                 id="email"
@@ -213,7 +188,16 @@ exports[`Form validation should fail the submit the form 1`] = `
                 </legend>
               </fieldset>
             </div>
-            
+            <p
+              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error Mui-focused"
+              id="email-helper-text"
+            >
+              <span
+                data-testid="email-error-message"
+              >
+                Email is required
+              </span>
+            </p>
           </div>
         </div>
         <div
@@ -266,7 +250,7 @@ exports[`Form validation should fail the submit the form 1`] = `
 </div>
 `;
 
-exports[`Form validation should firstName be required for submitting 1`] = `
+exports[`Form fields should firstName be required for submitting 1`] = `
 <div>
   <div
     class="my-form"
@@ -389,19 +373,18 @@ exports[`Form validation should firstName be required for submitting 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-error Mui-error"
-              data-shrink="false"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
               for="phone"
               id="phone-label"
             >
               Phone
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             >
               <input
-                aria-describedby="phone-helper-text"
-                aria-invalid="true"
+                aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="phone"
                 id="phone"
@@ -414,7 +397,7 @@ exports[`Form validation should firstName be required for submitting 1`] = `
                 class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-9"
+                  class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
                 >
                   <span>
                     Phone
@@ -422,16 +405,7 @@ exports[`Form validation should firstName be required for submitting 1`] = `
                 </legend>
               </fieldset>
             </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
-              id="phone-helper-text"
-            >
-              <span
-                data-testid="phone-error-message"
-              >
-                Phone is required
-              </span>
-            </p>
+            
           </div>
         </div>
         <div
@@ -441,19 +415,18 @@ exports[`Form validation should firstName be required for submitting 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-error Mui-error"
-              data-shrink="false"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
               for="email"
               id="email-label"
             >
               Email
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             >
               <input
-                aria-describedby="email-helper-text"
-                aria-invalid="true"
+                aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="email"
                 id="email"
@@ -466,7 +439,7 @@ exports[`Form validation should firstName be required for submitting 1`] = `
                 class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-9"
+                  class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
                 >
                   <span>
                     Email
@@ -474,16 +447,247 @@ exports[`Form validation should firstName be required for submitting 1`] = `
                 </legend>
               </fieldset>
             </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
-              id="email-helper-text"
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <select
+            class="form-data__label select-component "
+            data-testid="gender"
+            name="gender"
+          >
+            <option
+              value=""
             >
-              <span
-                data-testid="email-error-message"
+              - SELECT ONE -
+            </option>
+            <option
+              value="male"
+            >
+              Male
+            </option>
+            <option
+              value="female"
+            >
+              Female
+            </option>
+            <option
+              value="other"
+            >
+              Other
+            </option>
+          </select>
+        </div>
+        <div
+          class="form-data__label"
+        />
+        <div
+          class="form-data__submit submit"
+        >
+          <input
+            class="submit__button"
+            data-testid="submit"
+            id="submit"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form fields should gender be required for submitting 1`] = `
+<div>
+  <div
+    class="my-form"
+  >
+    <pre>
+      <code />
+    </pre>
+    <div
+      class="my-form__message"
+    />
+    <div
+      class="my-form__title"
+    >
+      📝 Register Form
+    </div>
+    <div
+      class="my-form__box"
+    >
+      <form
+        class="form-data"
+      >
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-26"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="firstName"
+              id="firstName-label"
+            >
+              First name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="firstName"
+                id="firstName"
+                name="firstName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-27 MuiOutlinedInput-notchedOutline"
               >
-                Email is required
-              </span>
-            </p>
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-29 PrivateNotchedOutline-legendNotched-30"
+                >
+                  <span>
+                    First name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-26"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="lastName"
+              id="lastName-label"
+            >
+              Last name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="lastName"
+                id="lastName"
+                name="lastName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-27 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-29 PrivateNotchedOutline-legendNotched-30"
+                >
+                  <span>
+                    Last name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-26"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="phone"
+              id="phone-label"
+            >
+              Phone
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="phone"
+                id="phone"
+                name="phone"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-27 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-29 PrivateNotchedOutline-legendNotched-30"
+                >
+                  <span>
+                    Phone
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-26"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="email"
+              id="email-label"
+            >
+              Email
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="email"
+                id="email"
+                name="email"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-27 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-29 PrivateNotchedOutline-legendNotched-30"
+                >
+                  <span>
+                    Email
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
           </div>
         </div>
         <div
@@ -543,7 +747,7 @@ exports[`Form validation should firstName be required for submitting 1`] = `
 </div>
 `;
 
-exports[`Form validation should lastName be required for submitting 1`] = `
+exports[`Form fields should lastName be required for submitting 1`] = `
 <div>
   <div
     class="my-form"
@@ -666,19 +870,18 @@ exports[`Form validation should lastName be required for submitting 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-11"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-error Mui-error"
-              data-shrink="false"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
               for="phone"
               id="phone-label"
             >
               Phone
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             >
               <input
-                aria-describedby="phone-helper-text"
-                aria-invalid="true"
+                aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="phone"
                 id="phone"
@@ -691,7 +894,7 @@ exports[`Form validation should lastName be required for submitting 1`] = `
                 class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-14"
+                  class="PrivateNotchedOutline-legendLabelled-14 PrivateNotchedOutline-legendNotched-15"
                 >
                   <span>
                     Phone
@@ -699,16 +902,7 @@ exports[`Form validation should lastName be required for submitting 1`] = `
                 </legend>
               </fieldset>
             </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
-              id="phone-helper-text"
-            >
-              <span
-                data-testid="phone-error-message"
-              >
-                Phone is required
-              </span>
-            </p>
+            
           </div>
         </div>
         <div
@@ -718,19 +912,18 @@ exports[`Form validation should lastName be required for submitting 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-11"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-error Mui-error"
-              data-shrink="false"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
               for="email"
               id="email-label"
             >
               Email
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
             >
               <input
-                aria-describedby="email-helper-text"
-                aria-invalid="true"
+                aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="email"
                 id="email"
@@ -743,7 +936,7 @@ exports[`Form validation should lastName be required for submitting 1`] = `
                 class="PrivateNotchedOutline-root-12 MuiOutlinedInput-notchedOutline"
               >
                 <legend
-                  class="PrivateNotchedOutline-legendLabelled-14"
+                  class="PrivateNotchedOutline-legendLabelled-14 PrivateNotchedOutline-legendNotched-15"
                 >
                   <span>
                     Email
@@ -751,23 +944,14 @@ exports[`Form validation should lastName be required for submitting 1`] = `
                 </legend>
               </fieldset>
             </div>
-            <p
-              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
-              id="email-helper-text"
-            >
-              <span
-                data-testid="email-error-message"
-              >
-                Email is required
-              </span>
-            </p>
+            
           </div>
         </div>
         <div
           class="form-data__label"
         >
           <select
-            class="form-data__label select-component select-component-error"
+            class="form-data__label select-component "
             data-testid="gender"
             name="gender"
           >
@@ -792,13 +976,6 @@ exports[`Form validation should lastName be required for submitting 1`] = `
               Other
             </option>
           </select>
-          <p
-            class="select-component__message"
-            data-testid="gender-error-message"
-            role="alert"
-          >
-            Gender is required
-          </p>
         </div>
         <div
           class="form-data__label"
@@ -820,51 +997,17 @@ exports[`Form validation should lastName be required for submitting 1`] = `
 </div>
 `;
 
-exports[`Form validation should submit the form with success 1`] = `
+exports[`Form fields should phone be required for submitting 1`] = `
 <div>
   <div
     class="my-form"
   >
     <pre>
-      <code>
-        {
-    "firstName": "Julio",
-    "lastName": "Guedes",
-    "phone": "3199282822",
-    "email": "julio@gmail.com",
-    "gender": "male"
-}
-      </code>
+      <code />
     </pre>
     <div
       class="my-form__message"
-    >
-      <div
-        class="MuiPaper-root MuiAlert-root MuiAlert-standardSuccess MuiPaper-elevation0"
-        data-testid="alert-message-success"
-        role="alert"
-      >
-        <div
-          class="MuiAlert-icon"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
-            />
-          </svg>
-        </div>
-        <div
-          class="MuiAlert-message"
-        >
-          Sign up successfully done!
-        </div>
-      </div>
-    </div>
+    />
     <div
       class="my-form__title"
     >
@@ -967,7 +1110,7 @@ exports[`Form validation should submit the form with success 1`] = `
             class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-16"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-error Mui-error Mui-focused Mui-focused"
               data-shrink="true"
               for="phone"
               id="phone-label"
@@ -975,10 +1118,11 @@ exports[`Form validation should submit the form with success 1`] = `
               Phone
             </label>
             <div
-              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error Mui-focused Mui-focused MuiInputBase-formControl"
             >
               <input
-                aria-invalid="false"
+                aria-describedby="phone-helper-text"
+                aria-invalid="true"
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 data-testid="phone"
                 id="phone"
@@ -999,7 +1143,16 @@ exports[`Form validation should submit the form with success 1`] = `
                 </legend>
               </fieldset>
             </div>
-            
+            <p
+              class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error Mui-focused"
+              id="phone-helper-text"
+            >
+              <span
+                data-testid="phone-error-message"
+              >
+                Phone is required
+              </span>
+            </p>
           </div>
         </div>
         <div
@@ -1034,6 +1187,546 @@ exports[`Form validation should submit the form with success 1`] = `
               >
                 <legend
                   class="PrivateNotchedOutline-legendLabelled-19 PrivateNotchedOutline-legendNotched-20"
+                >
+                  <span>
+                    Email
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <select
+            class="form-data__label select-component "
+            data-testid="gender"
+            name="gender"
+          >
+            <option
+              value=""
+            >
+              - SELECT ONE -
+            </option>
+            <option
+              value="male"
+            >
+              Male
+            </option>
+            <option
+              value="female"
+            >
+              Female
+            </option>
+            <option
+              value="other"
+            >
+              Other
+            </option>
+          </select>
+        </div>
+        <div
+          class="form-data__label"
+        />
+        <div
+          class="form-data__submit submit"
+        >
+          <input
+            class="submit__button"
+            data-testid="submit"
+            id="submit"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form submitting should fail the submit the form 1`] = `
+<div>
+  <div
+    class="my-form"
+  >
+    <pre>
+      <code />
+    </pre>
+    <div
+      class="my-form__message"
+    >
+      <div
+        class="MuiPaper-root MuiAlert-root MuiAlert-standardError MuiPaper-elevation0"
+        data-testis="alert-message-error"
+        role="alert"
+      >
+        <div
+          class="MuiAlert-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiAlert-message"
+        >
+          Oh no, something bad happened.
+        </div>
+      </div>
+    </div>
+    <div
+      class="my-form__title"
+    >
+      📝 Register Form
+    </div>
+    <div
+      class="my-form__box"
+    >
+      <form
+        class="form-data"
+      >
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-36"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="firstName"
+              id="firstName-label"
+            >
+              First name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="firstName"
+                id="firstName"
+                name="firstName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-39 PrivateNotchedOutline-legendNotched-40"
+                >
+                  <span>
+                    First name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-36"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="lastName"
+              id="lastName-label"
+            >
+              Last name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="lastName"
+                id="lastName"
+                name="lastName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-39 PrivateNotchedOutline-legendNotched-40"
+                >
+                  <span>
+                    Last name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-36"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="phone"
+              id="phone-label"
+            >
+              Phone
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="phone"
+                id="phone"
+                name="phone"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-39 PrivateNotchedOutline-legendNotched-40"
+                >
+                  <span>
+                    Phone
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-36"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="email"
+              id="email-label"
+            >
+              Email
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="email"
+                id="email"
+                name="email"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-37 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-39 PrivateNotchedOutline-legendNotched-40"
+                >
+                  <span>
+                    Email
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <select
+            class="form-data__label select-component "
+            data-testid="gender"
+            name="gender"
+          >
+            <option
+              value=""
+            >
+              - SELECT ONE -
+            </option>
+            <option
+              value="male"
+            >
+              Male
+            </option>
+            <option
+              value="female"
+            >
+              Female
+            </option>
+            <option
+              value="other"
+            >
+              Other
+            </option>
+          </select>
+        </div>
+        <div
+          class="form-data__label"
+        />
+        <div
+          class="form-data__submit submit"
+        >
+          <input
+            class="submit__button"
+            data-testid="submit"
+            id="submit"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Form submitting should submit the form with success 1`] = `
+<div>
+  <div
+    class="my-form"
+  >
+    <pre>
+      <code>
+        {
+    "firstName": "Julio",
+    "lastName": "Guedes",
+    "phone": "3199282822",
+    "email": "julio@gmail.com",
+    "gender": "male"
+}
+      </code>
+    </pre>
+    <div
+      class="my-form__message"
+    >
+      <div
+        class="MuiPaper-root MuiAlert-root MuiAlert-standardSuccess MuiPaper-elevation0"
+        data-testid="alert-message-success"
+        role="alert"
+      >
+        <div
+          class="MuiAlert-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiAlert-message"
+        >
+          Sign up successfully done!
+        </div>
+      </div>
+    </div>
+    <div
+      class="my-form__title"
+    >
+      📝 Register Form
+    </div>
+    <div
+      class="my-form__box"
+    >
+      <form
+        class="form-data"
+      >
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-31"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="firstName"
+              id="firstName-label"
+            >
+              First name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="firstName"
+                id="firstName"
+                name="firstName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-34 PrivateNotchedOutline-legendNotched-35"
+                >
+                  <span>
+                    First name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-31"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="lastName"
+              id="lastName-label"
+            >
+              Last name
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="lastName"
+                id="lastName"
+                name="lastName"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-34 PrivateNotchedOutline-legendNotched-35"
+                >
+                  <span>
+                    Last name
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-31"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="phone"
+              id="phone-label"
+            >
+              Phone
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="phone"
+                id="phone"
+                name="phone"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-34 PrivateNotchedOutline-legendNotched-35"
+                >
+                  <span>
+                    Phone
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="form-data__label"
+        >
+          <div
+            class="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-31"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink="true"
+              for="email"
+              id="email-label"
+            >
+              Email
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input"
+                data-testid="email"
+                id="email"
+                name="email"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="PrivateNotchedOutline-root-32 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="PrivateNotchedOutline-legendLabelled-34 PrivateNotchedOutline-legendNotched-35"
                 >
                   <span>
                     Email

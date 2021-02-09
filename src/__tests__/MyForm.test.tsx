@@ -6,21 +6,30 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import MyForm from "components/MyForm";
-import { setupServer } from "msw/node";
-import { rest } from "msw";
-import { handlers } from "mocks/handlers";
+import { User, createUser } from "services/user";
 
-const server = setupServer(...handlers);
+const formUserValues = {
+  firstName: "Julio",
+  lastName: "Guedes",
+  phone: "3199282822",
+  email: "julio@gmail.com",
+  gender: "male",
+};
 
-beforeAll(() => server.listen());
-afterAll(() => server.close());
-afterEach(() => server.resetHandlers());
+jest.mock("services/user");
+const createUserSpy: jest.SpyInstance = createUser as any;
+beforeEach(() =>
+  createUserSpy.mockResolvedValue({
+    data: {
+      ...formUserValues,
+    },
+  })
+);
 
-describe("Form validation", () => {
+describe("Form fields", () => {
   test("should inputs change values", () => {
     const mockOnSubmit = jest.fn();
     const { getByTestId } = render(<MyForm onSubmitHandler={mockOnSubmit} />);
-
     const firstName = getByTestId("firstName") as HTMLInputElement;
     const lastName = getByTestId("lastName") as HTMLInputElement;
     const phone = getByTestId("phone") as HTMLInputElement;
@@ -28,19 +37,23 @@ describe("Form validation", () => {
     const gender = getByTestId("gender") as HTMLSelectElement;
 
     act(() => {
-      fireEvent.change(firstName, { target: { value: "Julio" } });
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
     });
     act(() => {
-      fireEvent.change(lastName, { target: { value: "Guedes" } });
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
     });
     act(() => {
-      fireEvent.change(phone, { target: { value: "3199282822" } });
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
     });
     act(() => {
-      fireEvent.change(email, { target: { value: "julio@gmail.com" } });
+      fireEvent.change(email, { target: { value: formUserValues.email } });
     });
     act(() => {
-      fireEvent.change(gender, { target: { value: "male" } });
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
     });
 
     expect(firstName).toHaveValue("Julio");
@@ -58,13 +71,30 @@ describe("Form validation", () => {
 
     const firstName = getByTestId("firstName") as HTMLInputElement;
     const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
     const submit = getByTestId("submit");
 
     act(() => {
-      fireEvent.input(firstName, { target: { value: "" } });
+      fireEvent.change(firstName, {
+        target: { value: "" },
+      });
     });
     act(() => {
-      fireEvent.input(lastName, { target: { value: "Guedes" } });
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
     });
 
     await act(async () => {
@@ -82,13 +112,28 @@ describe("Form validation", () => {
 
     const firstName = getByTestId("firstName") as HTMLInputElement;
     const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
     const submit = getByTestId("submit");
 
     act(() => {
-      fireEvent.input(firstName, { target: { value: "Julio" } });
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
     });
     act(() => {
-      fireEvent.input(lastName, { target: { value: "" } });
+      fireEvent.change(lastName, { target: "" });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
     });
 
     await act(async () => {
@@ -98,6 +143,131 @@ describe("Form validation", () => {
     expect(container).toMatchSnapshot();
   });
 
+  test("should phone be required for submitting", async () => {
+    const mockOnSubmit = jest.fn();
+    const { getByTestId, container } = render(
+      <MyForm onSubmitHandler={mockOnSubmit} />
+    );
+
+    const firstName = getByTestId("firstName") as HTMLInputElement;
+    const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
+    const submit = getByTestId("submit");
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: "" } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test("should email be required for submitting", async () => {
+    const mockOnSubmit = jest.fn();
+    const { getByTestId, container } = render(
+      <MyForm onSubmitHandler={mockOnSubmit} />
+    );
+
+    const firstName = getByTestId("firstName") as HTMLInputElement;
+    const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
+    const submit = getByTestId("submit");
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: "" } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test("should gender be required for submitting", async () => {
+    const mockOnSubmit = jest.fn();
+    const { getByTestId, container } = render(
+      <MyForm onSubmitHandler={mockOnSubmit} />
+    );
+
+    const firstName = getByTestId("firstName") as HTMLInputElement;
+    const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
+    const submit = getByTestId("submit");
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: "" } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+});
+
+describe("Form submitting", () => {
   test("should submit the form with success", async () => {
     const mockOnSubmit = jest.fn();
     const { getByTestId, container } = render(
@@ -113,41 +283,37 @@ describe("Form validation", () => {
     const submit = getByTestId("submit");
 
     act(() => {
-      fireEvent.change(firstName, { target: { value: "Julio" } });
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
     });
     act(() => {
-      fireEvent.change(lastName, { target: { value: "Guedes" } });
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
     });
     act(() => {
-      fireEvent.change(phone, { target: { value: "3199282822" } });
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
     });
     act(() => {
-      fireEvent.change(email, { target: { value: "julio@gmail.com" } });
+      fireEvent.change(email, { target: { value: formUserValues.email } });
     });
     act(() => {
-      fireEvent.change(gender, { target: { value: "male" } });
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
     });
 
     await act(async () => {
       fireEvent.click(submit);
     });
 
-    await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+    // waitForElementToBeRemoved(() => getByTestId("icon-loading"));
 
-    // expect(mockOnSubmit).toHaveBeenCalledTimes(1);
+    expect(mockOnSubmit).toHaveBeenCalledTimes(1);
     expect(container).toMatchSnapshot();
   });
 
   test("should fail the submit the form", async () => {
-    const testErrorMessage = "Oh no, something bad happened";
-    server.use(
-      rest.post(
-        "https://auth-provider.test.com/api/login",
-        async (req, res, ctx) => {
-          return res(ctx.status(500), ctx.json({ message: testErrorMessage }));
-        }
-      )
-    );
+    createUserSpy.mockRejectedValue({});
 
     const mockOnSubmit = jest.fn();
     const { getByTestId, container } = render(
@@ -163,27 +329,31 @@ describe("Form validation", () => {
     const submit = getByTestId("submit");
 
     act(() => {
-      fireEvent.change(firstName, { target: { value: "Julio" } });
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
     });
     act(() => {
-      fireEvent.change(lastName, { target: { value: "Guedes" } });
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
     });
     act(() => {
-      fireEvent.change(phone, { target: { value: "3199282822" } });
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
     });
     act(() => {
-      fireEvent.change(email, { target: { value: "julio@gmail.com" } });
+      fireEvent.change(email, { target: { value: formUserValues.email } });
     });
     act(() => {
-      fireEvent.change(gender, { target: { value: "male" } });
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
     });
 
     await act(async () => {
       fireEvent.click(submit);
     });
 
-    await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
-
+    // await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
+    expect(mockOnSubmit).toHaveBeenCalledTimes(0);
     expect(container).toMatchSnapshot();
   });
 });
