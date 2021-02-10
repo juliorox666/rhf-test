@@ -1,6 +1,8 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { SinginPage } from "pages/Signin";
+import { HomePage } from "pages/Home";
 import "./App.css";
-import MyForm from "components/MyForm";
 
 const App: React.FC = () => {
   return (
@@ -9,7 +11,10 @@ const App: React.FC = () => {
         <div className="app__title">React Hook Form Test</div>
       </header>
       <div className="app__content">
-        <MyForm onSubmitHandler={(data) => JSON.stringify(data)} />
+        <Router>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/signin" component={SinginPage} />
+        </Router>
       </div>
     </div>
   );
