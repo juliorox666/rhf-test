@@ -448,7 +448,7 @@ exports[`Storyshots Example/Page Logged Out 1`] = `
 </article>
 `;
 
-exports[`Storyshots MyForm First Story 1`] = `
+exports[`Storyshots MyForm My Form Primary 1`] = `
 <div
   className="my-form"
 >
@@ -656,6 +656,274 @@ exports[`Storyshots MyForm First Story 1`] = `
             >
               <legend
                 className="PrivateNotchedOutline-legendLabelled-4"
+              >
+                <span>
+                  Email
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
+      </div>
+      <div
+        className="form-data__label"
+      >
+        <select
+          className="form-data__label select-component "
+          data-testid="gender"
+          name="gender"
+        >
+          <option
+            value=""
+          >
+            - SELECT ONE -
+          </option>
+          <option
+            value="male"
+          >
+            Male
+          </option>
+          <option
+            value="female"
+          >
+            Female
+          </option>
+          <option
+            value="other"
+          >
+            Other
+          </option>
+        </select>
+      </div>
+      <div
+        className="form-data__label"
+      />
+      <div
+        className="form-data__submit submit"
+      >
+        <input
+          className="submit__button"
+          data-testid="submit"
+          disabled={true}
+          id="submit"
+          type="submit"
+          value="Submit"
+        />
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Storyshots MyForm My Form Second Version 1`] = `
+<div
+  className="my-form"
+>
+  <pre>
+    <code />
+  </pre>
+  <div
+    className="my-form__message"
+  />
+  <div
+    className="my-form__title"
+  >
+    📝 Register Form
+  </div>
+  <div
+    className="my-form__box"
+  >
+    <form
+      className="form-data"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-data__label"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink={false}
+            htmlFor="firstName"
+            id="firstName-label"
+          >
+            First name
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="firstName"
+              disabled={false}
+              id="firstName"
+              name="firstName"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-9"
+              >
+                <span>
+                  First name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
+      </div>
+      <div
+        className="form-data__label"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink={false}
+            htmlFor="lastName"
+            id="lastName-label"
+          >
+            Last name
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="lastName"
+              disabled={false}
+              id="lastName"
+              name="lastName"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-9"
+              >
+                <span>
+                  Last name
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
+      </div>
+      <div
+        className="form-data__label"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink={false}
+            htmlFor="phone"
+            id="phone-label"
+          >
+            Phone
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="phone"
+              disabled={false}
+              id="phone"
+              name="phone"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-9"
+              >
+                <span>
+                  Phone
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
+      </div>
+      <div
+        className="form-data__label"
+      >
+        <div
+          className="MuiFormControl-root MuiTextField-root WithStyles(ForwardRef(TextField))-root-6"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink={false}
+            htmlFor="email"
+            id="email-label"
+          >
+            Email
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+            onClick={[Function]}
+          >
+            <input
+              aria-invalid={false}
+              autoFocus={false}
+              className="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="email"
+              disabled={false}
+              id="email"
+              name="email"
+              onAnimationStart={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              type="text"
+            />
+            <fieldset
+              aria-hidden={true}
+              className="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="PrivateNotchedOutline-legendLabelled-9"
               >
                 <span>
                   Email

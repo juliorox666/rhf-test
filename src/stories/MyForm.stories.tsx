@@ -11,7 +11,12 @@ const Template: Story<ComponentProps<typeof MyForm>> = (args) => (
   <MyForm {...args} />
 );
 
-export const FirstStory = Template.bind({});
-FirstStory.args = {
+export const MyFormPrimary = Template.bind({});
+MyFormPrimary.args = {
+  onSubmitHandler: (data) => data,
+};
+
+export const MyFormSecondVersion = Template.bind({});
+MyFormSecondVersion.args = {
   onSubmitHandler: (data) => data,
 };

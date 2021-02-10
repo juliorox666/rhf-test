@@ -61,14 +61,10 @@ const MyForm: React.FC<MyFormProps> = ({
     createUser(dataForm)
       .then((response) => {
         const { data } = response;
-        if (data.firstName === "err") {
-          throw Error("something wrong");
-        } else {
-          setHasError(false);
-          setUser(data);
-          onSubmitHandler(data);
-          setIsLoading(false);
-        }
+        setHasError(false);
+        setUser(data);
+        onSubmitHandler(data);
+        setIsLoading(false);
       })
       .catch(() => {
         setHasError(true);

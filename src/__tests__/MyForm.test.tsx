@@ -360,9 +360,7 @@ describe("Form submitting", () => {
   });
 
   test("should fail in the first time and succeed on second time", async () => {
-    createUserSpy.mockRejectedValueOnce(
-      () => new Promise((value) => setTimeout(() => value, 1500))
-    );
+    createUserSpy.mockRejectedValueOnce({});
 
     const mockOnSubmit = jest.fn();
     const { getByTestId } = render(<MyForm onSubmitHandler={mockOnSubmit} />);
@@ -432,5 +430,46 @@ describe("Form submitting", () => {
 
     expect(mockOnSubmit).toHaveBeenCalledTimes(1);
     expect(getByTestId("alert-message-success")).toBeInTheDocument();
+  });
+
+  test("should loading after submitting", async () => {
+    createUserSpy.mockResolvedValue((value) => new Promise(value));
+
+    const mockOnSubmit = jest.fn();
+    const { getByTestId } = render(<MyForm onSubmitHandler={mockOnSubmit} />);
+
+    const firstName = getByTestId("firstName") as HTMLInputElement;
+    const lastName = getByTestId("lastName") as HTMLInputElement;
+    const phone = getByTestId("phone") as HTMLInputElement;
+    const email = getByTestId("email") as HTMLInputElement;
+    const gender = getByTestId("gender") as HTMLSelectElement;
+
+    const submit = getByTestId("submit");
+
+    act(() => {
+      fireEvent.change(firstName, {
+        target: { value: formUserValues.firstName },
+      });
+    });
+    act(() => {
+      fireEvent.change(lastName, {
+        target: { value: formUserValues.lastName },
+      });
+    });
+    act(() => {
+      fireEvent.change(phone, { target: { value: formUserValues.phone } });
+    });
+    act(() => {
+      fireEvent.change(email, { target: { value: formUserValues.email } });
+    });
+    act(() => {
+      fireEvent.change(gender, { target: { value: formUserValues.gender } });
+    });
+
+    await act(async () => {
+      fireEvent.click(submit);
+    });
+
+    await waitForElementToBeRemoved(() => getByTestId("icon-loading"));
   });
 });

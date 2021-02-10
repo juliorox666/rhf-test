@@ -1,7 +1,7 @@
-import axios from "axios";
+import { http } from "services/api";
 import { createUser } from "services/user";
 
-jest.mock("axios");
+jest.mock("services/api");
 
 const formUserValues = {
   firstName: "Julio",
@@ -15,11 +15,13 @@ describe("http request", () => {
   test("should login user", async () => {
     const data = formUserValues;
 
-    axios.post.mockImplementationOnce(() => Promise.resolve(data));
+    const httpPostSpy: jest.SpyInstance = http.post as any;
+
+    httpPostSpy.mockImplementationOnce(() => Promise.resolve(data));
 
     await expect(createUser(data)).resolves.toEqual(data);
 
-    expect(axios.post).toHaveBeenCalledWith(
+    expect(httpPostSpy).toHaveBeenCalledWith(
       `${process.env.REACT_APP_API_BASE_URL}/login`,
       data
     );
