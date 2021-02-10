@@ -5,7 +5,6 @@ import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import { CircularProgress } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
-import { http } from "services/api";
 import { User, createUser } from "services/user";
 import "./styles.css";
 
@@ -43,18 +42,22 @@ interface MyFormProps {
 const MyForm: React.FC<MyFormProps> = ({
   onSubmitHandler = (data) => JSON.stringify(data),
 }: MyFormProps) => {
+  // local variables
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>();
-  const {
-    register,
-    handleSubmit,
-    errors,
-    formState: { isDirty },
-    reset,
-  } = useForm<User>();
+
+  // react hook form
+  const { register, handleSubmit, errors, formState, reset } = useForm<User>();
+  const { isDirty } = formState;
+
+  // functions
   const onSubmit = handleSubmit((dataForm) => {
+    // reseting data
     setIsLoading(true);
+    setHasError(false);
+    setUser(undefined);
+
     createUser(dataForm)
       .then((response) => {
         const { data } = response;
@@ -87,7 +90,7 @@ const MyForm: React.FC<MyFormProps> = ({
           </Alert>
         )}
         {hasError && (
-          <Alert data-testis="alert-message-error" severity="error">
+          <Alert data-testid="alert-message-error" severity="error">
             Oh no, something bad happened.
           </Alert>
         )}
