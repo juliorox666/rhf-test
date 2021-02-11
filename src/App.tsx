@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { SinginPage } from "pages/Signin";
+import { SigninPage } from "pages/Signin";
 import { HomePage } from "pages/Home";
 import "./App.css";
 
@@ -13,7 +13,7 @@ const App: React.FC = () => {
       <div className="app__content">
         <Router>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/signin" component={SinginPage} />
+          <Route exact path="/signin" component={SigninPage} />
         </Router>
       </div>
     </div>
