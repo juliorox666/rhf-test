@@ -263,7 +263,7 @@ test("should be in signin page", () => {
                   disabled=""
                   id="submit"
                   type="submit"
-                  value="Submit"
+                  value="Sign In"
                 />
               </div>
             </form>

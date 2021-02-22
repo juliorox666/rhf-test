@@ -241,7 +241,7 @@ exports[`Form fields should email be required for submitting 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -491,7 +491,7 @@ exports[`Form fields should firstName be required for submitting 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -738,7 +738,7 @@ exports[`Form fields should gender be required for submitting 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -988,7 +988,7 @@ exports[`Form fields should lastName be required for submitting 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -1238,7 +1238,7 @@ exports[`Form fields should phone be required for submitting 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -1504,7 +1504,7 @@ exports[`Form submitting should fail the submit the form 1`] = `
             data-testid="submit"
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
@@ -1779,7 +1779,7 @@ exports[`Form submitting should submit the form with success 1`] = `
             disabled=""
             id="submit"
             type="submit"
-            value="Submit"
+            value="Sign In"
           />
         </div>
       </form>
