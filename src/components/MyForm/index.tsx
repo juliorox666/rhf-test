@@ -213,7 +213,7 @@ const MyForm: React.FC<MyFormProps> = ({
               data-testid="submit"
               className="submit__button"
               type="submit"
-              value="Submit"
+              value="Sign In"
             />
           </div>
         </form>
