@@ -5,7 +5,8 @@ import TextField, { TextFieldProps } from "@material-ui/core/TextField";
 import { CircularProgress } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { useForm } from "react-hook-form";
-import { User, createUser } from "services/user";
+import { createUser } from "services/user";
+import { User } from "models/User";
 import "./styles.css";
 
 const TextFieldCustom = styled(TextField)({

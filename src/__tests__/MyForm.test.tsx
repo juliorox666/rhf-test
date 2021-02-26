@@ -433,7 +433,7 @@ describe("Form submitting", () => {
   });
 
   test("should loading after submitting", async () => {
-    createUserSpy.mockResolvedValue((value) => new Promise(value));
+    createUserSpy.mockResolvedValue((value: any) => new Promise(value));
 
     const mockOnSubmit = jest.fn();
     const { getByTestId } = render(<MyForm onSubmitHandler={mockOnSubmit} />);

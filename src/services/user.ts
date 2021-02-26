@@ -1,13 +1,6 @@
 import { AxiosResponse } from "axios";
 import { http } from "services/api";
-
-export interface User {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  email: string;
-  gender: string;
-}
+import { User } from "models/User";
 
 export const createUser = (dataUser: User): Promise<AxiosResponse<User>> => {
   if (dataUser.firstName === "err") {
